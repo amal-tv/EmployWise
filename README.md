@@ -1,6 +1,6 @@
 
 # **EmployWise - User Management System**
-
+ **Vercel Link**: [https://employ-wise-three.vercel.app/](https://employ-wise-three.vercel.app/)
 ## **Overview**
 
 EmployWise is a React-based application that integrates with the Reqres API to handle basic user management functions, including authentication, listing users, and performing CRUD operations on users.
@@ -40,26 +40,14 @@ Before getting started, ensure you have the following installed:
    To run the app locally, use:
    ```bash
    npm start
+   or npm run dev(if it is vite)
    ```
 
-   This will start the development server and open the app in your default web browser at [http://localhost:3000](http://localhost:3000).
+   This will start the development server and open the app in your default web browser at [http://localhost:3000] or (http://localhost:5173).
 
 ---
 
-## **Features**
 
-### **Authentication Screen**
-- Users can log in using hardcoded credentials (Email: `eve.holt@reqres.in`, Password: `cityslicka`).
-- After successful login, the application stores the authentication token and redirects the user to the users' list.
-
-### **User List**
-- Displays users fetched from the Reqres API with pagination.
-- Each user is shown with their first name, last name, and avatar.
-
-### **CRUD Operations**
-- **Edit**: Clicking on the "Edit" button opens a form pre-filled with the user's data. Users can update their first name, last name, and email.
-- **Delete**: Clicking "Delete" removes the user from the list.
-- All operations are performed using the Reqres API (`PUT` for updating and `DELETE` for removing users).
 
 ---
 
@@ -69,7 +57,7 @@ Before getting started, ensure you have the following installed:
 - **Authentication**: The login credentials are hardcoded, and the login token is stored in local storage. The token is used for authentication and user navigation.
 - **Error Handling**: The app gracefully handles API errors, displaying appropriate error messages to the user.
 - **Responsive Design**: The user interface is designed to be responsive and should work on both desktop and mobile devices.
-- **Form Validation**: Basic form validation is implemented for login and user editing forms.
+- **Form Validation**: Basic form validation is implemented for login and user editing forms using react-hook-forma with zod.
 
 ---
 
