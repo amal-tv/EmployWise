@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -13,7 +13,7 @@ const loginSchema = z.object({
 });
 
 const Login = () => {
-  const { login, loading, error } = useAuth();
+  const { login, loading, error, token } = useAuth(); // Added isAuthenticated
   const navigate = useNavigate();
 
   const {
@@ -23,6 +23,13 @@ const Login = () => {
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
+
+  // Check if user is already authenticated and redirect to users page
+  useEffect(() => {
+    if (token) {
+      navigate("/users");
+    }
+  }, [token]);
 
   const onSubmit = async (data) => {
     const result = await login(data.email, data.password);

@@ -33,7 +33,8 @@ export const EditUser = () => {
       console.log("User updated successfully:", edited);
   
       
-      toast.success("User updated successfully!");
+      toast.success("User updated successfully!", { duration: 3000, position: "top-center" });
+
   
       
       navigate('/users');

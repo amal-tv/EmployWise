@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import  Users  from "./pages/Users";
-import AppLayout from "./layouts/AppLayout";
-import Login from "./pages/Login";
 import { AuthProvider } from './context/AuthContext';
 import { UsersProvider } from './context/UsersContext';
-import { EditUser } from "./pages/EditUser";
-import { Toaster } from "react-hot-toast"; // Import Toaster
+import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Users from "./pages/Users";
+import Login from "./pages/Login";
+import {EditUser} from "./pages/EditUser";
+import AppLayout from "./layouts/AppLayout";
 
 const router = createBrowserRouter([
   {
@@ -13,15 +14,21 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Login />,
+        element: <Login />
       },
       {
         path: '/users',
-        element: <Users />,
-      },
-      {
-        path: '/users/:id/edit',
-        element: <EditUser />,
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/users',
+            element: <Users />
+          },
+          {
+            path: '/users/:id/edit',
+            element: <EditUser />
+          },
+        ],
       },
     ],
   },
